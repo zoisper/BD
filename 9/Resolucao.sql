@@ -119,7 +119,8 @@ SELECT cromoDados(Nr) FROM Cromo;
 
 CREATE TABLE audCromo(
 Nr INT, 
-DataCompra DATETIME);
+DataCompra DATETIME,
+PRIMARY KEY(Nr));
 
 DELIMITER $$
 CREATE TRIGGER tgAudCromo
@@ -134,3 +135,9 @@ END$$
 
 -- 10. Crie um utilizador que tenha apenas permissões para consultar as tabelas “Cromo”, “Jogador” e “Equipa”.
 
+CREATE USER teste@localhost 
+IDENTIFIED BY "Adm1nas-";
+
+GRANT SELECT ON caderneta.Equipa to 'teste'@'localhost'; 
+GRANT SELECT ON caderneta.Jogador TO 'teste'@'localhost'; 
+GRANT SELECT ON caderneta.Cromo TO 'teste'@'localhost'; 
